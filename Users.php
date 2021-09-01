@@ -34,6 +34,15 @@ class Users extends DbConnection {
 	}
 	#--- end checkLogin function ---#
 
+	#--- start logOut function ---#
+	public function logout() {
+		if (isset($_SESSION['loginInfo'])) {
+			unset($_SESSION['loginInfo']);
+		}
+		session_destroy();
+	}
+	#--- end logOut function ---#
+
 } // End Of Class
 
 

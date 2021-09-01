@@ -13,6 +13,14 @@ if (! $loginInfo) {
 	exit();
 }
 
+if (isset($_GET['url'])) {
+	if ($_GET["url"] == "logout") {
+		$users->logout();
+		header("Location: login.php");
+		exit();
+	}
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -23,6 +31,7 @@ if (! $loginInfo) {
 	<title>Index Page</title>
 </head>
 <body>
+	<a href="?url=logout">خروج</a>
 	<h1>اطلاعات کاربر</h1>
 	<ul>
 		<li><span>نام کاربر : </span><?= $loginInfo["userFullName"]; ?></li>
