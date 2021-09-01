@@ -7,20 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
-
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>php login oop</title>
   </head>
   <body>
       <div class="login-page">
         <div class="container">
-            <div class="row" style="width: 100%;
-height: 100vh;display: flex;
-justify-content: center;
-align-items: center">
+            <div class="row" style="width: 100%;height: 100vh;display: flex;justify-content: center;align-items: center">
                 <div class="col-12 col-md-6 col-lg-4">
-                   <div class="card" style="border: 0;
-box-shadow: 0 0 10px 0px #eee;
-border-radius: 10px;padding: 20px">
+                   <div class="card" style="border: 0;box-shadow: 0 0 10px 0px #eee;border-radius: 10px;padding: 20px">
                        <div class="card-body">
                             <form action="#">
                                 <div class="input-group mb-3">
