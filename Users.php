@@ -20,6 +20,19 @@ class Users extends DbConnection {
 	}
 	#--- end userInfo function ---#
 
+	#--- start userDetails function ---#
+	public function userDetails($sql) {
+		$userInfo = $this->connection->query($sql);
+
+    	if ($userInfo->num_rows > 0) {
+    		return $userInfo->fetch_assoc();
+    	}
+
+    	return false;
+	}
+
+	#--- end userDetails function ---#
+
 	#--- start checkLogin function ---#
 	public function checkLogin($session) {
 		if (isset($session["loginInfo"])) {
@@ -38,6 +51,9 @@ class Users extends DbConnection {
 	public function logout() {
 		if (isset($_SESSION['loginInfo'])) {
 			unset($_SESSION['loginInfo']);
+		}
+		if (isset($_COOKIE['remmemberMe'])) {
+			setcookie("remmemberMe", "", time() - 10);
 		}
 		session_destroy();
 	}

@@ -6,12 +6,33 @@ include_once "Users.php";
 
 $users = new Users();
 
+$userInfo = null;
+
 // check user is login
 $loginInfo = $users->checkLogin($_SESSION);
 
 if ($loginInfo) {
     header("Location: index.php");
     exit();
+}
+
+// check remmember me is on
+if (isset($_COOKIE['remmemberMe'])) {
+    $remmemberMe = $_COOKIE['remmemberMe'];
+    $sql = "SELECT * FROM users WHERE remmember_me = '$remmemberMe'";
+    $userInfo = $users->userDetails($sql);
+    if (! empty($userInfo)) {
+        $_SESSION['loginInfo'] = array(
+                "isLogin" => true,
+                "userId" => $userInfo["id"],
+                "username" => $userInfo["username"],
+                "userFullName" => $userInfo["full_name"],
+                "userMobile" => $userInfo["mobile"],
+            );
+
+        header("Location: index.php");
+        exit();
+    }
 }
 
 if (isset($_POST["login"])) {
@@ -29,6 +50,11 @@ if (isset($_POST["login"])) {
                 "userFullName" => $userInfo["full_name"],
                 "userMobile" => $userInfo["mobile"],
             );
+
+            // Set remember me
+            if (isset($_POST["remmemberMe"])) {
+                setcookie("remmemberMe", sha1($userInfo["id"]), time() + 365 * 24 * 60 * 60);
+            }
 
             header("Location: index.php");
             exit();
@@ -85,7 +111,7 @@ if (isset($_POST["login"])) {
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <input type="checkbox" class="form-check" id="remmemberMe">
+                                    <input type="checkbox" name="remmemberMe" class="form-check" id="remmemberMe">
                                     <label for="remmemberMe" class="form-label ms-2"><small>مرا به خاطر بسپار  </small></label>
                                 </div>
 
