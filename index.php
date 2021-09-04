@@ -21,16 +21,11 @@ if (isset($_GET['url'])) {
 	}
 }
 
-
+$pageTitle = "مشخصات کاربر";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Index Page</title>
-</head>
-<body>
+
+<?php include_once "common/header.php"; ?>
+
 	<a href="?url=logout">خروج</a>
 	<h1>اطلاعات کاربر</h1>
 	<ul>
@@ -38,5 +33,4 @@ if (isset($_GET['url'])) {
 		<li><span> موبایل : </span><?= $loginInfo["userMobile"]; ?></li>
 	</ul>
 
-</body>
-</html>
+<?php include_once "common/footer.php"; ?>
