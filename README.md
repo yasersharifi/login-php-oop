@@ -3,7 +3,9 @@ Login to web page with oop php by yaser
 
 author: yasser sharifi zade
 
-check user is login or not
+# How Install This App
 
-login via username and password
+1 . اولیک دیتابیس با نام oop_login ایجاد میکنیم.
+
+2 . فایل  oop_login.sql را import میکنیم
 
